@@ -24,7 +24,7 @@ def load_settings():
     if not os.path.isfile(settings_file_name):
         return
     file = open(settings_file_name, "r")
-    auto_push = True if file.read() == '1' else False
+    auto_push = file.read() == '1'
     file.close()
 
 def push_to_file():
@@ -99,8 +99,7 @@ def main():
         push_to_file()
     elif user_input == 'auto_push':
         auto_push = not auto_push
-        msg = "Auto push enabled" if auto_push else "Auto push disabled."
-        print(msg)
+        print("Auto push enabled" if auto_push else "Auto push disabled.")
         save_settings()
     elif user_input == 'help':
         print_help()
