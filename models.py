@@ -82,8 +82,6 @@ class PinBoard():
         raise NoSuchIDException("There is no pin with the specified ID!")
 
     def remove_pin(self, pin: Pin) -> bool:
-        if pin not in self.board:
-            return False
         index: int = self.find_index_for(pin)
         if index == -1:
             return False
