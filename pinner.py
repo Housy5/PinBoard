@@ -43,6 +43,7 @@ def load_from_file():
     file = open(push_file_name, 'rb')
     board = pickle.load(file)
     file.close()
+    board.scan_pins()
 
 def pin(msg: str):
     new_pin = Pin(msg)
@@ -76,6 +77,8 @@ def print_help():
 def main():
     global running
     global auto_push
+    
+    print(Pin._used_ids)
     
     user_input: str = input(' >> ').casefold()
     if user_input.startswith('pin '):

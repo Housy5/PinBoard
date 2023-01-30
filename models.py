@@ -30,6 +30,10 @@ class Pin:
         self._init_id()
         self._msg = self._to_sentence_case(message)
     
+    def assign(self):
+        if self._id not in self._used_ids:
+            self._used_ids.append(self._id)
+    
     def get_message(self) -> str:
         return self._msg
     
@@ -86,3 +90,6 @@ class PinBoard():
         del(self.board[index])
         return True
 
+    def scan_pins(self):
+        for x in self.board:
+            x.assign()
